@@ -1,0 +1,37 @@
+.addressWrapper {
+    width: 300px;
+    min-height: 100px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.contactWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.contAndIconWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.text {
+    font-weight: 500;
+    color: black;
+    font-style: normal;
+}
+.btnsWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.btnCancel{
+    width: 30px;
+    height: 30px;
+}

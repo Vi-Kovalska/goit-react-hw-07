@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 300px;
+    height: auto;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input {
+    width: auto;
+    height: 25px;
+    box-shadow: 0px 3px 12px rgba(39, 39, 39, 0.664);
+}
+
+.btnSub {
+    width: 120px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error {
+    color: black;
+    border: 1px solid red;
+    border-radius: 4px;
+    text-shadow: rgb(255, 0, 0) 1px 0 10px;
+    padding: 5px;
+}
