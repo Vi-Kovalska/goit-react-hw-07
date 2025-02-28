@@ -4,7 +4,7 @@ import {
   deleteContact,
   editContact,
   fetchContacts,
-} from "./operations";
+} from "./contactsOps";
 import toast from "react-hot-toast";
 import { selectNameFilter } from "./filtersSlice";
 

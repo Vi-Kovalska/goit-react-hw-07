@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import s from './Contact.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteContact, editContact} from '../../redux/operations';
+import { deleteContact, editContact} from '../../redux/contactsOps';
 import ContactForm from "../ContactForm/ContactForm";
 import { selectContacts } from '../../redux/contactsSlice';
 import toast from 'react-hot-toast';
@@ -18,17 +18,16 @@ const Contact = ({ data: { id, name, number }}) => {
           (cont) => String(cont.number) !== String(values.number)
         );
 
-        if ((!uniqueName && !uniqueTel) || !uniqueTel) {
-          toast.error("This number is already added to contacts");
-          return;
-        }
+     if (!uniqueTel) return toast.error("This number is already added to contacts");
+     if (!uniqueName) return toast.error("This name is already added to contacts");
+
     dispatch(editContact({ id, ...values }));
     setEdited(false);
      actions.resetForm();
  }
   return (
     <address className={s.addressWrapper}>
-      {edited ? <ContactForm btnName={'Edit'} handleSubmit={handleSubmit}><button className={s.btnCancel} onClick={()=>setEdited(false)}>x</button></ContactForm> :  <div className={s.contactWrapper}>
+      {edited ? <ContactForm btnName={'Edit'} handleSubmit={handleSubmit} initialValues={{name, number}}><button className={s.btnCancel} onClick={()=>setEdited(false)}>x</button></ContactForm> :  <div className={s.contactWrapper}>
         <div className={s.contAndIconWrapper}>
           <svg aria-hidden="true" width={22} height={22} fill={'black'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 16c2.947 0 5.333-2.387 5.333-5.333s-2.387-5.333-5.333-5.333c-2.947 0-5.333 2.387-5.333 5.333s2.387 5.333 5.333 5.333zM16 18.667c-3.56 0-10.667 1.787-10.667 5.333v1.333c0 0.733 0.6 1.333 1.333 1.333h18.667c0.733 0 1.333-0.6 1.333-1.333v-1.333c0-3.547-7.107-5.333-10.667-5.333z"></path></svg>
            <p className={s.text}>{name}</p></div>

@@ -11,7 +11,6 @@ export const fetchContacts = createAsyncThunk(
       return response.data;
     } catch (error) {
       if (error.name === "CanceledError") {
-        console.log("Request aborted, ignoring error");
         return thunkAPI.rejectWithValue("ABORTED");
       }
       return thunkAPI.rejectWithValue(error.message);

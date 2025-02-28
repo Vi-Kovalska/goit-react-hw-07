@@ -4,7 +4,7 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchBox from './SearchBox/SearchBox';
 import { useDispatch, useSelector} from "react-redux";
-import { addContact, fetchContacts  } from '../redux/operations';
+import { addContact, fetchContacts  } from '../redux/contactsOps';
 import { selectContacts, selectError, selectLoading} from '../redux/contactsSlice';
 import toast from 'react-hot-toast';
 
@@ -31,10 +31,9 @@ function App() {
         const uniqueTel = items.every(
           (cont) => String(cont.number) !== String(values.number)
         );
-        if ((!uniqueName && !uniqueTel) || !uniqueTel) {
-          toast.error("This number is already added to contacts");
-          return;
-        }
+          if (!uniqueTel) return toast.error("This number is already added to contacts");
+          if (!uniqueName) return toast.error("This name is already added to contacts");
+        
     const newObj = {
       ...values
     }
